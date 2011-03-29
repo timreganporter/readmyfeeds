@@ -6,6 +6,7 @@ gem 'rails', '3.0.4'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'sqlite3'
+gem 'json'
 gem 'facebooker2'
 gem 'twiliolib'
 gem 'nifty-generators', :group => :development
