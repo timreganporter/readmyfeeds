@@ -1,0 +1,18 @@
+# See lib/configuration.rb. Rubified variant of http://railscasts.com/episodes/85-yaml-configuration-file
+
+common: &common
+  twilio_account_sid: AC699a4edd9c7cc6f193d6ac762ee8d78a
+  twilio_token: 205119a7eef0444bcfbf6cebb7cfeb06
+  twlio_api: 2010-04-01
+  twlio_caller_id: (650) 262-4730
+
+development:
+  twilio_base_url: http://71.204.24.247:3000/twilio
+  <<: *common
+
+test:
+  <<: *common
+
+production:
+  twilio_base_url: http://concertphone.timreganporter.com/twilio
+  <<: *common

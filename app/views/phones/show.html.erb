@@ -1,0 +1,13 @@
+<% title "Phone" %>
+
+<p>
+  <strong>Number:</strong>
+  <%= @phone.number %>
+  <%= link_to "Edit", edit_phone_path(@phone) %> |
+  <%= link_to "Delete", @phone, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", phones_path %>
+</p>
+
+<p><%= link_to "Add another Phone", new_phone_path %></p>
+
+<p><%= link_to "Back to Feed", feeds_path %></p>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Readmyfeeds</title>
+  <%= stylesheet_link_tag :all %>
+  <%= javascript_include_tag :defaults %>
+  <%= csrf_meta_tag %>
+</head>
+<body>
+
+<%- flash.each do |name, msg| -%>
+  <%= content_tag :div, msg, :id => "flash_#{name}" %>
+<%- end -%>
+
+<%= fb_connect_async_js %>
+<% if current_facebook_user %>
+  <%= fb_profile_pic( current_facebook_user, { :size => "square" } ) %>
+  <%= "Hello #{ fb_name( current_facebook_user, :useyou => false ) }!".html_safe %>
+  <%= fb_logout_link( "Logout of Facebook", request.url ) %><br />
+<% else %>
+  <%= fb_login_and_redirect( root_url , :perms => 'read_stream') %>
+<% end %>
+
+
+<%= yield %>
+
+</body>
+</html>

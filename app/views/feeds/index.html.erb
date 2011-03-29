@@ -1,0 +1,12 @@
+<h2>Phones:</h2>
+<ul>
+<% @phones.each do |phone| %>
+  <li><%= phone.number %></li>
+<% end -%>
+  <li><%= link_to "Link #{ @phones.blank? ? "a" : "another" } phone number", new_phone_path %></li>
+</ul>
+
+<h2>Facebook Feed:</h2>
+<ul>
+  <%= render :partial => "post", :collection => @posts %>
+</ul>
