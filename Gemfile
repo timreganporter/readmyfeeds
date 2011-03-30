@@ -7,6 +7,7 @@ gem 'rails', '3.0.4'
 
 gem 'sqlite3'
 gem 'json'
+gem 'hashie'
 gem 'facebooker2'
 gem 'twiliolib'
 gem 'nifty-generators', :group => :development

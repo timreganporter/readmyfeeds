@@ -1,15 +1,10 @@
 class FbFeed < Feed
   attr_accessor :user, :posts
 
-  def initialize(user=nil)
+  def initialize(user)
     super()
-    self.user = user
-  end
-
-  def posts
-    posts = self.user.home
-    RAILS_DEFAULT_LOGGER.debug("posts = #{ posts }")
-    self.posts = posts.map do |post|
+    results = Hashie::Mash.new HTTParty::get("https://graph.facebook.com/#{ user.facebook_id }/home", :query => { "access_token" => user.facebook_access_token })
+    self.posts = results.data.map do |post|
       FbPost.new(post)
     end
   end
