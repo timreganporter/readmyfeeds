@@ -5,11 +5,11 @@ class ApplicationController < ActionController::Base
 
   # TODO: needs major refactoring
   def ensure_authenticated
-    if current_facebook_user.nil? && params[:PhoneNumber].blank?
+    if current_facebook_user.nil? && params[:Caller].blank?
       redirect_to url_for(:controller => "login")
     else
-      if params[:PhoneNumber]
-        phone = params[:PhoneNumber].match(/(\d){10}$/)[0]
+      if params[:Caller]
+        phone = params[:Caller].match(/(\d){10}$/)[0]
         @current_user = Phone.find_by_number(phone).user
         offline_client = Mogli::Client.new(@current_user.facebook_access_token, nil)
         fb_user = Mogli::User.find(@current_user.facebook_id, offline_client) # reusing current_facebook_user breaks use in else, somehow
