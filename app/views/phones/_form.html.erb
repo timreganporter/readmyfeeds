@@ -1,7 +1,7 @@
 <%= form_for @phone do |f| %>
   <%= f.error_messages %>
   <p>
-    <%= f.label :number %><br />
+    <%= f.label :number %> (10 digits, don't include country code, US only)<br />
     <%= f.text_field :number %>
   </p>
   <p><%= f.submit %></p>
