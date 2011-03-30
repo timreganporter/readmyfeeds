@@ -13,6 +13,7 @@ class FbPost #< Post
         self.description = "Took the following actions: " + post.actions.map{ |a| a.name }.join(", ")
       end
     end
+    self.description = self.description.gsub(/http:\S*/, '')
     self.from = post.try(:from).try(:name)
   end
 
