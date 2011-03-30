@@ -1,0 +1,16 @@
+<h1>Read My Feeds</h1>
+
+<p>Searching Twitter for "I wish there was an app for" last weekend, I found someone wanting an app to read
+his Facebook feed. I was looking for non-Paste ideas to use the Facebook Graph API and for more Twilio ideas.
+So, a few hours and a couple evenings later, here is Read My Feeds.</p>
+
+<p>You can login via FB Oauth and it will pull your news feed. Associate a phone number with your account here,
+and you can call <b>(650) 763-3399</b> and hear Twilio read your most recent feeds.</p>
+
+<p>If I were to make this a real app, I'd want to add Twitter, convert it to an iOS app, add menu options
+that would let you like, retweet, etc. Internationalizing this would also be trivial; I just didn't
+want to deal wth searching for multiple phone formats in this quick prototype.</p>
+
+<p>I could also do more work on the feed parsing. Right now, I look for basic status updates, wall posts, and
+generic actions (like, comment, etc) and strip out http URLs so that what's being read isn't too
+cumbersome (though it's not always meaningful--c.f. generic actions).</p>
