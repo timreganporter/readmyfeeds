@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110329001634) do
+ActiveRecord::Schema.define(:version => 20110330013247) do
 
   create_table "phones", :force => true do |t|
     t.string   "number"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(:version => 20110329001634) do
     t.string   "facebook_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "facebook_access_token"
   end
 
 end

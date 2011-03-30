@@ -19,7 +19,7 @@
         <%= "Hello #{ fb_name( current_facebook_user, :useyou => false ) }!".html_safe %>
         <%# fb_logout_link( "Logout of Facebook", request.url ) %><br />
       <% else %>
-        <%= fb_login_and_redirect( root_url , :perms => 'read_stream') %>
+        <%= fb_login_and_redirect( root_url , :perms => 'read_stream, offline_access') %>
       <% end %>
 
       <%= content_tag :h1, yield(:title) if show_title? %>
