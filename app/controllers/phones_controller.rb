@@ -2,11 +2,11 @@ class PhonesController < ApplicationController
   before_filter :ensure_authenticated
 
   def index
-    @phones = @current_user.phones
+    @phones = @user.phones
   end
   
   def show
-    @phone = @current_user.phones.find(params[:id])
+    @phone = @user.phones.find(params[:id])
   end
   
   def new
@@ -25,11 +25,11 @@ class PhonesController < ApplicationController
   end
 
   def edit
-    @phone = @current_user.phones.find(params[:id])
+    @phone = @user.phones.find(params[:id])
   end
 
   def update
-    @phone = @current_user.phones.find(params[:id])
+    @phone = @user.phones.find(params[:id])
     add_user
     if @phone.update_attributes(params[:phone])
       flash[:notice] = "Successfully updated phone."
@@ -40,7 +40,7 @@ class PhonesController < ApplicationController
   end
   
   def destroy
-    @phone = @current_user.phones.find(params[:id])
+    @phone = @user.phones.find(params[:id])
     @phone.destroy
     flash[:notice] = "Successfully destroyed phone."
     redirect_to phones_url
@@ -49,7 +49,7 @@ class PhonesController < ApplicationController
   protected
 
   def add_user
-    @phone.user = @current_user
+    @phone.user = @user
   end
 
 end

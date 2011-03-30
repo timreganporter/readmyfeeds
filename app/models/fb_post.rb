@@ -13,7 +13,7 @@ class FbPost #< Post
         self.description = "Took the following actions: " + post.actions.map{ |a| a.name }.join(", ")
       end
     end
-    self.from = post.try(:from)
+    self.from = post.try(:from).try(:name)
   end
 
 end

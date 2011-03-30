@@ -15,11 +15,22 @@ class ApplicationController < ActionController::Base
         fb_user = Mogli::User.find(@user.facebook_id, offline_client) # reusing current_facebook_user breaks use in else, somehow
       else
         @user = User.find_or_create_by_facebook_id(current_facebook_user.id)
+        #not the best place, but ...
+        set_access_token
         current_facebook_user.fetch
       end
       @feed = FbFeed.new(@user)
       logger.debug("twilio, #{ @feed }")
       logger.debug("url = https://graph.facebook.com/#{ @user.facebook_id }/home?access_token=#{ @user.facebook_access_token }")
+    end
+  end
+
+  protected
+
+  def set_access_token
+    if (@user.facebook_access_token != current_facebook_client.access_token)
+      @user.facebook_access_token = current_facebook_client.access_token
+      @user.save
     end
   end
 
