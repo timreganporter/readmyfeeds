@@ -10,7 +10,11 @@ class ApplicationController < ActionController::Base
     else
       if params[:Caller]
         phone = params[:Caller].match(/(\d){10}$/)[0]
-        @user = Phone.find_by_number(phone).user
+        @user = Phone.find_by_number(phone).try(:user)
+        unless @user
+          redirect_to url_for(:controller => "login", :action => "not_found", :format => :xml)
+          return
+        end
         offline_client = Mogli::Client.new(@user.facebook_access_token, nil)
         fb_user = Mogli::User.find(@user.facebook_id, offline_client) # reusing current_facebook_user breaks use in else, somehow
       else

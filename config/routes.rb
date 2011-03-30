@@ -4,8 +4,7 @@ Readmyfeeds::Application.routes.draw do
   resources :feeds, :only => :index
 
   match 'twilio/index.:format' => 'twilio#index'
-
-  match 'login' => 'login#index'
+  match 'login/:action(.:format)' => 'login'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
