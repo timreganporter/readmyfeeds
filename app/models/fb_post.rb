@@ -14,6 +14,10 @@ class FbPost #< Post
       end
     end
     self.description = self.description.gsub(/http:\S*/, '')
+    # big assumption
+    if self.description.blank?
+      self.description = "Posted a link"
+    end
     self.from = post.try(:from).try(:name)
   end
 
